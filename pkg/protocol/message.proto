@@ -1,0 +1,18 @@
+syntax = "proto3";
+package protocol;
+
+message Message {
+    string avatar = 1; // avatar
+    string fromUsername = 2; // Send the user name of the message user
+    string from = 3; // Send message user UUID
+    string to = 4; // Send to UUID to the end user
+    string content = 5; // Text message content
+    int32  contentType = 6; // Message Content Type: 1. Text 2. Ordinary File 3. Picture 4. Audio 5. Video 6. Voice Chat 7. Video chat
+    string type = 7;  // Message Transmission Type: If it is a heartbeat message, this content is headbeat, online video or audio is webrtc
+    int32 messageType = 8; // message type, 1. Single chat 2. Group chat
+    string url = 9;   // picture, video, voice path
+    string fileSuffix = 10;   // File suffix, if you cannot analyze the file suffix through the binary head, use the suffix
+    bytes file = 11;   // If it is a binary of pictures, files, videos, etc.
+    
+}
+
