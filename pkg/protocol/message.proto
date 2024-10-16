@@ -1,6 +1,7 @@
 syntax = "proto3";
 package protocol;
 
+option go_package = "./protocol";
 message Message {
     string avatar = 1; // avatar
     string fromUsername = 2; // Send the user name of the message user
