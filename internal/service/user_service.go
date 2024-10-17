@@ -1,17 +1,23 @@
 package service
 
 import (
-	"errors"
+	
 	"realtime-chat-app/internal/dao/pool"
 	"realtime-chat-app/internal/model"
+	"realtime-chat-app/pkg/common/request"
+	"realtime-chat-app/pkg/common/response"
 	"realtime-chat-app/pkg/global/log"
 	"time"
+	"realtime-chat-app/pkg/errors"
+
 
 	"github.com/google/uuid"
 )
 
 type userService struct {
 }
+
+const NULL_ID int32 = 0
 
 var UserService = new(userService)
 
