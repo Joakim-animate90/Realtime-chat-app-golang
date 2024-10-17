@@ -2,7 +2,9 @@ package service
 
 import (
 	"errors"
+	"realtime-chat-app/internal/dao/pool"
 	"realtime-chat-app/internal/model"
+	"realtime-chat-app/pkg/global/log"
 	"time"
 
 	"github.com/google/uuid"
@@ -49,7 +51,7 @@ func (u *userService) ModifyUserInfo(user *model.User) error {
 	log.Logger.Debug("queryUser", log.Any("queryUser", queryUser))
 	var nullId int32 = 0
 	if nullId == queryUser.Id {
-		return errors.New("用户不存在")
+		return errors.New("User does not exist")
 	}
 	queryUser.Nickname = user.Nickname
 	queryUser.Email = user.Email
@@ -66,7 +68,7 @@ func (u *userService) GetUserDetails(uuid string) model.User {
 	return *queryUser
 }
 
-// 通过名称查找群组或者用户
+// Find the group or user through the name
 func (u *userService) GetUserOrGroupByName(name string) response.SearchResponse {
 	var queryUser *model.User
 	db := pool.GetDB()
@@ -105,13 +107,13 @@ func (u *userService) AddFriend(userFriendRequest *request.FriendRequest) error 
 	log.Logger.Debug("queryUser", log.Any("queryUser", queryUser))
 	var nullId int32 = 0
 	if nullId == queryUser.Id {
-		return errors.New("用户不存在")
+		return errors.New("User does not exist")
 	}
 
 	var friend *model.User
 	db.First(&friend, "username = ?", userFriendRequest.FriendUsername)
 	if nullId == friend.Id {
-		return errors.New("已添加该好友")
+		return errors.New("The friend has been added")
 	}
 
 	userFriend := model.UserFriend{
@@ -122,7 +124,7 @@ func (u *userService) AddFriend(userFriendRequest *request.FriendRequest) error 
 	var userFriendQuery *model.UserFriend
 	db.First(&userFriendQuery, "user_id = ? and friend_id = ?", queryUser.Id, friend.Id)
 	if userFriendQuery.ID != nullId {
-		return errors.New("该用户已经是你好友")
+		return errors.New("The user is already your friend")
 	}
 
 	db.AutoMigrate(&userFriend)
@@ -132,14 +134,14 @@ func (u *userService) AddFriend(userFriendRequest *request.FriendRequest) error 
 	return nil
 }
 
-// 修改头像
+// Modify the avatar
 func (u *userService) ModifyUserAvatar(avatar string, userUuid string) error {
 	var queryUser *model.User
 	db := pool.GetDB()
 	db.First(&queryUser, "uuid = ?", userUuid)
 
 	if NULL_ID == queryUser.Id {
-		return errors.New("用户不存在")
+		return errors.New("User does not exist")
 	}
 
 	db.Model(&queryUser).Update("avatar", avatar)

@@ -31,6 +31,7 @@ require (
 )
 
 require (
+	github.com/google/uuid v1.6.0
 	github.com/spf13/viper v1.19.0
 	go.uber.org/multierr v1.10.0 // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
