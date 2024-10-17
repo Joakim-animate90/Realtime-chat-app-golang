@@ -17,4 +17,5 @@ require (
 	go.uber.org/multierr v1.10.0 // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
 	gorm.io/gorm v1.25.12
+	gorm.io/plugin/soft_delete v1.2.1
 )
