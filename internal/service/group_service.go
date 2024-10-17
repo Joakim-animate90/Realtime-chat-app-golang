@@ -1,7 +1,10 @@
 package service
 
 import (
-
+	"realtime-chat-app/internal/dao/pool"
+	"realtime-chat-app/internal/model"
+	"realtime-chat-app/pkg/common/response"
+	"realtime-chat-app/pkg/errors"
 
 	"github.com/google/uuid"
 )
@@ -23,7 +26,7 @@ func (g *groupService) GetGroups(uuid string) ([]response.GroupResponse, error) 
 	db.First(&queryUser, "uuid = ?", uuid)
 
 	if queryUser.Id <= 0 {
-		return nil, errors.New("用户不存在")
+		return nil, errors.New("User does not exist")
 	}
 
 	var groups []response.GroupResponse
@@ -74,18 +77,18 @@ func (g *groupService) JoinGroup(groupUuid, userUuid string) error {
 	db := pool.GetDB()
 	db.First(&user, "uuid = ?", userUuid)
 	if user.Id <= 0 {
-		return errors.New("用户不存在")
+		return errors.New("User does not exist")
 	}
 
 	var group model.Group
 	db.First(&group, "uuid = ?", groupUuid)
 	if user.Id <= 0 {
-		return errors.New("群组不存在")
+		return errors.New("Group does not exist")
 	}
 	var groupMember model.GroupMember
 	db.First(&groupMember, "user_id = ? and group_id = ?", user.Id, group.ID)
 	if groupMember.ID > 0 {
-		return errors.New("已经加入该群组")
+		return errors.New("Has added the group")
 	}
 	nickname := user.Nickname
 	if nickname == "" {
