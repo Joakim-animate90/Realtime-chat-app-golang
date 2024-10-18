@@ -4,6 +4,7 @@ import (
 	
     
 	"realtime-chat-app/pkg/global/log"
+	"realtime-chat-app/internal/server"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
