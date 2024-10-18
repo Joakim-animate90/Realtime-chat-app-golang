@@ -1,8 +1,9 @@
 package kafka
 
 import (
-	"github.com/Shopify/sarama"
+	
 	"realtime-chat-app/pkg/global/log"
+	"github.com/IBM/sarama"
 
 	
 	"strings"

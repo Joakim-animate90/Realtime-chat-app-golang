@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"realtime-chat-app/pkg/global/log"
-	"github.com/Shopify/sarama"
+	"github.com/IBM/sarama"
 )
 
 var producer sarama.AsyncProducer

@@ -2,8 +2,7 @@ package router
 
 import (
 	"net/http"
-	"realtime-chat-app/internal/api/v1"
-	"realtime-chat-app/internal/service"
+	"realtime-chat-app/api/v1"
 	"realtime-chat-app/pkg/common/response"
 	"realtime-chat-app/pkg/global/log"
 

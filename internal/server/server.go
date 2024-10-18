@@ -4,6 +4,7 @@ import (
 	"realtime-chat-app/config"
 	"realtime-chat-app/internal/service"
 	"realtime-chat-app/pkg/common/constant"
+	"realtime-chat-app/pkg/common/util"
 	"realtime-chat-app/pkg/global/log"
 	"realtime-chat-app/pkg/protocol"
 
