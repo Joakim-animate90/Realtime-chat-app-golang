@@ -1,11 +1,11 @@
 package server
 
 import (
-	"chat-room/config"
-	"chat-room/internal/kafka"
-	"chat-room/pkg/common/constant"
-	"chat-room/pkg/global/log"
-	"chat-room/pkg/protocol"
+	"realtime-chat-app/config"
+	"realtime-chat-app/internal/kafka"
+	"realtime-chat-app/pkg/common/constant"
+	"realtime-chat-app/pkg/global/log"
+	"realtime-chat-app/pkg/protocol"
 
 	"github.com/gogo/protobuf/proto"
 	"github.com/gorilla/websocket"

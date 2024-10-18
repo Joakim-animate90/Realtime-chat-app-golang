@@ -1,12 +1,12 @@
 package server
 
 import (
-	"chat-room/config"
-	"chat-room/internal/service"
-	"chat-room/pkg/common/constant"
-	"chat-room/pkg/common/util"
-	"chat-room/pkg/global/log"
-	"chat-room/pkg/protocol"
+	"realtime-chat-app/config"
+	"realtime-chat-app/internal/service"
+	"realtime-chat-app/pkg/common/constant"
+	"realtime-chat-app/pkg/global/log"
+	"realtime-chat-app/pkg/protocol"
+
 	"encoding/base64"
 	"io/ioutil"
 	"strings"
@@ -36,7 +36,7 @@ func NewServer() *Server {
 	}
 }
 
-// 消费kafka里面的消息, 然后直接放入go channel中统一进行消费
+// Consumption of the message in KAFKA, and then put it directly in Go Channel for uniform consumption
 func ConsumerKafkaMsg(data []byte) {
 	MyServer.Broadcast <- data
 }
@@ -68,9 +68,9 @@ func (s *Server) Start() {
 			proto.Unmarshal(message, msg)
 
 			if msg.To != "" {
-				// 一般消息，比如文本消息，视频文件消息等
+				// General message, such as text messages, video file messages, etc.
 				if msg.ContentType >= constant.TEXT && msg.ContentType <= constant.VIDEO {
-					// 保存消息只会在存在socket的一个端上进行保存，防止分布式部署后，消息重复问题
+					// Save the message will only be saved on one end of the Socket to prevent distributed deployment.
 					_, exits := s.Clients[msg.From]
 					if exits {
 						saveMessage(msg)
@@ -88,8 +88,8 @@ func (s *Server) Start() {
 						sendGroupMessage(msg, s)
 					}
 				} else {
-					// 语音电话，视频电话等，仅支持单人聊天，不支持群聊
-					// 不保存文件，直接进行转发
+				// voice calls, video calls, etc., only support single people chatting, do not support group chat
+// Do not save the file, forward it directly
 					client, ok := s.Clients[msg.To]
 					if ok {
 						client.Send <- message
@@ -97,7 +97,7 @@ func (s *Server) Start() {
 				}
 
 			} else {
-				// 无对应接受人员进行广播
+				// No corresponding acceptance personnel to broadcast
 				for id, conn := range s.Clients {
 					log.Logger.Info("allUser", log.Any("allUser", id))
 
@@ -113,9 +113,9 @@ func (s *Server) Start() {
 	}
 }
 
-// 发送给群组消息,需要查询该群所有人员依次发送
+// Send to the group message, you need to check all the personnel of the group to send in turn
 func sendGroupMessage(msg *protocol.Message, s *Server) {
-	// 发送给群组的消息，查找该群所有的用户进行发送
+	// The message sent to the group to find all users in the group to send
 	users := service.GroupService.GetUserIdByGroupUuid(msg.To)
 	for _, user := range users {
 		if user.Uuid == msg.From {
@@ -128,7 +128,7 @@ func sendGroupMessage(msg *protocol.Message, s *Server) {
 		}
 
 		fromUserDetails := service.UserService.GetUserDetails(msg.From)
-		// 由于发送群聊时，from是个人，to是群聊uuid。所以在返回消息时，将form修改为群聊uuid，和单聊进行统一
+		// Because when sending group chats, From is an individual, to is a group chat with UUID.So when returning the message, modify FORM to a group chat UUID and unify the single chat
 		msgSend := protocol.Message{
 			Avatar:       fromUserDetails.Avatar,
 			FromUsername: msg.FromUsername,
@@ -148,9 +148,9 @@ func sendGroupMessage(msg *protocol.Message, s *Server) {
 	}
 }
 
-// 保存消息，如果是文本消息直接保存，如果是文件，语音等消息，保存文件后，保存对应的文件路径
+// Save the message, if it is stored directly, if it is file, voice and other messages, after saving the file, save the corresponding file path
 func saveMessage(message *protocol.Message) {
-	// 如果上传的是base64字符串文件，解析文件保存
+	// If you upload the BASE64 string file, the analysis file is stored
 	if message.ContentType == 2 {
 		url := uuid.New().String() + ".png"
 		index := strings.Index(message.Content, "base64")
@@ -172,7 +172,7 @@ func saveMessage(message *protocol.Message) {
 		message.Url = url
 		message.Content = ""
 	} else if message.ContentType == 3 {
-		// 普通的文件二进制上传
+		// Ordinary file binary upload
 		fileSuffix := util.GetFileType(message.File)
 		nullStr := ""
 		if nullStr == fileSuffix {

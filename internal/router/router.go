@@ -1,10 +1,11 @@
 package router
 
 import (
-	"chat-room/api/v1"
-	"chat-room/pkg/common/response"
-	"chat-room/pkg/global/log"
 	"net/http"
+	"realtime-chat-app/internal/api/v1"
+	"realtime-chat-app/internal/service"
+	"realtime-chat-app/pkg/common/response"
+	"realtime-chat-app/pkg/global/log"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -76,7 +77,7 @@ func Recovery(c *gin.Context) {
 	defer func() {
 		if r := recover(); r != nil {
 			log.Logger.Error("gin catch error: ", log.Any("gin catch error: ", r))
-			c.JSON(http.StatusOK, response.FailMsg("系统内部错误"))
+			c.JSON(http.StatusOK, response.FailMsg("Internal error"))
 		}
 	}()
 	c.Next()
