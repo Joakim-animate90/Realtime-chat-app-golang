@@ -54,6 +54,7 @@ require (
 require (
 	github.com/gin-gonic/gin v1.10.0
 	github.com/google/uuid v1.6.0
+	github.com/gorilla/websocket v1.5.3
 	github.com/spf13/viper v1.19.0
 	go.uber.org/multierr v1.10.0 // indirect
 	google.golang.org/protobuf v1.35.1 // indirect
