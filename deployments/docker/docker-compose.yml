@@ -12,8 +12,8 @@ services:
             - 9092:9092
         environment:
             KAFKA_BROKER_ID: 0
-            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.1.12:9092 # 物理机地址
-            KAFKA_CREATE_TOPICS: "go-chat-message:2:0"   # kafka启动后初始化一个有2个partition(分区)0个副本名叫go-chat-message的topic
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.1.12:9092 
+            KAFKA_CREATE_TOPICS: "go-chat-message:2:0"   # Kafka is initialized after starting a topic of 2 partitions (partitions) Topic named Go-Chat-MESSAGE
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
             KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
         depends_on:
@@ -24,15 +24,15 @@ services:
         container_name: mysql8
         restart: always
         environment:
-            TZ: Asia/Shanghai
+            TZ: Europe/Berlin
             MYSQL_ROOT_PASSWORD: thepswdforroot
-            MYSQL_DATABASE: go-chat-message
-            MYSQL_USER: gochat
-            MYSQL_PASSWORD: thepswdforgochat
+            MYSQL_DATABASE: realtime-chat
+            MYSQL_USER: realtime-chat-go
+            MYSQL_PASSWORD: thepswdforrealtime-chat-go
         ports:
             - 3306:3306
         command:
-            # 将mysql8.0默认密码策略 修改为 原先 策略 (mysql8.0对其默认策略做了更改 会导致密码无法匹配)
+            # Modify mysql8.0 default password strategy to the original strategy (MySQL8.0 to change its default strategy will cause the password to be unable to match)
             --default-authentication-plugin=mysql_native_password
             --character-set-server=utf8mb4
             --collation-server=utf8mb4_general_ci
@@ -47,15 +47,15 @@ services:
         ports:
             - 80:80
         links: 
-            - gochat
-            - gochat1
+            - realtime-chat-go
+            - realtime-chat-go1
         depends_on: 
-            - gochat
-            - gochat1
+            - realtime-chat-go
+            - realtime-chat
 
-    gochat:
-        image: konenet/gochat:1.0
-        container_name: gochat
+    realtime-chat-go:
+        image: joakim/realtime-chat-go:1.0
+        container_name: realtime-chat-go
         restart: always
         ports:
             - 8888:8888
@@ -66,10 +66,10 @@ services:
             - mysql8
             - kafka
 
-    gochat1:
-        image: konenet/gochat:1.0
+    realtime-chat-go1:
+        image: joakim/realtime-chat-go:1.0
         restart: always
-        container_name: gochat1
+        container_name: realtime-chat-go1
         links: 
             - mysql8
             - kafka

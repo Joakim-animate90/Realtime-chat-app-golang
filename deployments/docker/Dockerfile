@@ -1,7 +1,7 @@
 FROM hub.c.163.com/public/centos:7.0
-RUN [ "mkdir", "/usr/local/gochat" ]
-RUN [ "mkdir", "-p", "/usr/local/gochat/web/static/file" ]
-WORKDIR /usr/local/gochat
-COPY ../../bin/chat /usr/local/gochat
-COPY ../../config.toml /usr/local/gochat
+RUN [ "mkdir", "/usr/local/realtime-chat-go" ]
+RUN [ "mkdir", "-p", "/usr/local/realtime-chat-go/web/static/file" ]
+WORKDIR /usr/local/realtime-chat-go
+COPY ../../bin/chat /usr/local/realtime-chat-go/
+COPY ../../config.toml /usr/local/realtime-chat-go/
 CMD [ "/usr/local/gochat/chat" ]
