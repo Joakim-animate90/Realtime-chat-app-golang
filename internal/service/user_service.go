@@ -1,15 +1,13 @@
 package service
 
 import (
-	
 	"realtime-chat-app/internal/dao/pool"
 	"realtime-chat-app/internal/model"
 	"realtime-chat-app/pkg/common/request"
 	"realtime-chat-app/pkg/common/response"
+	"realtime-chat-app/pkg/errors"
 	"realtime-chat-app/pkg/global/log"
 	"time"
-	"realtime-chat-app/pkg/errors"
-
 
 	"github.com/google/uuid"
 )

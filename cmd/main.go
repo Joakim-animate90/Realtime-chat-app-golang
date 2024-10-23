@@ -1,12 +1,13 @@
 package main
 
 import (
-	"chat-room/config"
-	"chat-room/internal/kafka"
-	"chat-room/internal/router"
-	"chat-room/internal/server"
-	"chat-room/pkg/common/constant"
-	"chat-room/pkg/global/log"
+	"realtime-chat-app/config"
+	"realtime-chat-app/internal/kafka"
+	"realtime-chat-app/internal/router"
+	"realtime-chat-app/internal/server"
+	"realtime-chat-app/pkg/common/constant"
+	"realtime-chat-app/pkg/global/log"
+
 	"net/http"
 	"time"
 )

@@ -24,7 +24,7 @@ services:
         container_name: mysql8
         restart: always
         environment:
-            TZ: Europe/Berlin
+            TZ: Africa/Nairobi 
             MYSQL_ROOT_PASSWORD: thepswdforroot
             MYSQL_DATABASE: realtime-chat
             MYSQL_USER: realtime-chat-go
@@ -51,10 +51,10 @@ services:
             - realtime-chat-go1
         depends_on: 
             - realtime-chat-go
-            - realtime-chat
+            - realtime-chat-go1
 
     realtime-chat-go:
-        image: joakim/realtime-chat-go:1.0
+        build: ./ # Pointing to the root of your project
         container_name: realtime-chat-go
         restart: always
         ports:
@@ -67,7 +67,7 @@ services:
             - kafka
 
     realtime-chat-go1:
-        image: joakim/realtime-chat-go:1.0
+        build: ./ # Pointing to the root of your project
         restart: always
         container_name: realtime-chat-go1
         links: 

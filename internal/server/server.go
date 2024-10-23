@@ -89,8 +89,8 @@ func (s *Server) Start() {
 						sendGroupMessage(msg, s)
 					}
 				} else {
-				// voice calls, video calls, etc., only support single people chatting, do not support group chat
-// Do not save the file, forward it directly
+					// voice calls, video calls, etc., only support single people chatting, do not support group chat
+					// Do not save the file, forward it directly
 					client, ok := s.Clients[msg.To]
 					if ok {
 						client.Send <- message

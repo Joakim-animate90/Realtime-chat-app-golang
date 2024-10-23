@@ -1,12 +1,11 @@
 package v1
 
 import (
-	
 	"net/http"
+	"realtime-chat-app/internal/service"
 	"realtime-chat-app/pkg/common/request"
 	"realtime-chat-app/pkg/common/response"
 	"realtime-chat-app/pkg/global/log"
-	"realtime-chat-app/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

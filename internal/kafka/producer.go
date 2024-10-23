@@ -3,8 +3,8 @@ package kafka
 import (
 	"strings"
 
-	"realtime-chat-app/pkg/global/log"
 	"github.com/IBM/sarama"
+	"realtime-chat-app/pkg/global/log"
 )
 
 var producer sarama.AsyncProducer

@@ -15,13 +15,13 @@ import (
 var fileTypeMap sync.Map
 
 func init() {
-	fileTypeMap.Store("ffd8ffe000104a464946", "jpg")  //JPEG (jpg)
-	fileTypeMap.Store("89504e470d0a1a0a0000", "png")  //PNG (png)
-	fileTypeMap.Store("47494638396126026f01", "gif")  //GIF (gif)
-	fileTypeMap.Store("49492a00227105008037", "tif")  //TIFF (tif)
-	fileTypeMap.Store("424d228c010000000000", "bmp") 
-	fileTypeMap.Store("424d8240090000000000", "bmp")  
-	fileTypeMap.Store("424d8e1b030000000000", "bmp")  
+	fileTypeMap.Store("ffd8ffe000104a464946", "jpg") //JPEG (jpg)
+	fileTypeMap.Store("89504e470d0a1a0a0000", "png") //PNG (png)
+	fileTypeMap.Store("47494638396126026f01", "gif") //GIF (gif)
+	fileTypeMap.Store("49492a00227105008037", "tif") //TIFF (tif)
+	fileTypeMap.Store("424d228c010000000000", "bmp")
+	fileTypeMap.Store("424d8240090000000000", "bmp")
+	fileTypeMap.Store("424d8e1b030000000000", "bmp")
 	fileTypeMap.Store("41433130313500000000", "dwg")  //CAD (dwg)
 	fileTypeMap.Store("3c21444f435459504520", "html") //HTML (html)   3c68746d6c3e0  3c68746d6c3e0
 	fileTypeMap.Store("3c68746d6c3e0", "html")        //HTML (html)   3c68746d6c3e0  3c68746d6c3e0
@@ -31,26 +31,26 @@ func init() {
 	fileTypeMap.Store("7b5c727466315c616e73", "rtf")  //Rich Text Format (rtf)
 	fileTypeMap.Store("38425053000100000000", "psd")  //Photoshop (psd)
 	fileTypeMap.Store("46726f6d3a203d3f6762", "eml")  //Email [Outlook Express 6] (eml)
-	fileTypeMap.Store("d0cf11e0a1b11ae10000", "vsd")  
-	fileTypeMap.Store("5374616E64617264204A", "mdb")  //MS Access (mdb)
+	fileTypeMap.Store("d0cf11e0a1b11ae10000", "vsd")
+	fileTypeMap.Store("5374616E64617264204A", "mdb") //MS Access (mdb)
 	fileTypeMap.Store("252150532D41646F6265", "ps")
 
 	fileTypeMap.Store("255044462d312e350d0a", "pdf")          //Adobe Acrobat (pdf)
 	fileTypeMap.Store("D0CF11E0", "xls")                      //xls
 	fileTypeMap.Store("504B030414000600080000002100", "xlsx") //xls
-	fileTypeMap.Store("d0cf11e0a1b11ae10000", "doc")          
-	fileTypeMap.Store("504b0304140006000800", "docx")         
-	fileTypeMap.Store("d0cf11e0a1b11ae10000", "wps")          
+	fileTypeMap.Store("d0cf11e0a1b11ae10000", "doc")
+	fileTypeMap.Store("504b0304140006000800", "docx")
+	fileTypeMap.Store("d0cf11e0a1b11ae10000", "wps")
 
-	fileTypeMap.Store("2e524d46000000120001", "rmvb") 
-	fileTypeMap.Store("464c5601050000000900", "flv")  
+	fileTypeMap.Store("2e524d46000000120001", "rmvb")
+	fileTypeMap.Store("464c5601050000000900", "flv")
 	fileTypeMap.Store("00000020667479706d70", "mp4")
 	fileTypeMap.Store("49443303000000002176", "mp3")
-	fileTypeMap.Store("000001ba210001000180", "mpg") 
-	fileTypeMap.Store("3026b2758e66cf11a6d9", "wmv") 
+	fileTypeMap.Store("000001ba210001000180", "mpg")
+	fileTypeMap.Store("3026b2758e66cf11a6d9", "wmv")
 	fileTypeMap.Store("52494646e27807005741", "wav") //Wave (wav)
 	fileTypeMap.Store("52494646246009005741", "wav") //Wave (wav)
-	fileTypeMap.Store("52494646", "wav")             
+	fileTypeMap.Store("52494646", "wav")
 
 	fileTypeMap.Store("52494646d07d60074156", "avi")
 	fileTypeMap.Store("1a45dfa3a34286810142", "webm")
@@ -60,18 +60,18 @@ func init() {
 	fileTypeMap.Store("526172211a0700cf9073", "rar")
 	fileTypeMap.Store("235468697320636f6e66", "ini")
 	fileTypeMap.Store("504b03040a0000000000", "jar")
-	fileTypeMap.Store("4d5a9000030000000400", "exe")        
-	fileTypeMap.Store("3c25402070616765206c", "jsp")        
-	fileTypeMap.Store("4d616e69666573742d56", "mf")         
-	fileTypeMap.Store("3c3f786d6c2076657273", "xml")      
-	fileTypeMap.Store("494e5345525420494e54", "sql")      
-	fileTypeMap.Store("7061636b616765207765", "java")       
-	fileTypeMap.Store("406563686f206f66660d", "bat")        
-	fileTypeMap.Store("1f8b0800000000000000", "gz")         
-	fileTypeMap.Store("6c6f67346a2e726f6f74", "properties") 
-	fileTypeMap.Store("cafebabe0000002e0041", "class")      
-	fileTypeMap.Store("49545346030000006000", "chm")        
-	fileTypeMap.Store("04000000010000001300", "mxp")        
+	fileTypeMap.Store("4d5a9000030000000400", "exe")
+	fileTypeMap.Store("3c25402070616765206c", "jsp")
+	fileTypeMap.Store("4d616e69666573742d56", "mf")
+	fileTypeMap.Store("3c3f786d6c2076657273", "xml")
+	fileTypeMap.Store("494e5345525420494e54", "sql")
+	fileTypeMap.Store("7061636b616765207765", "java")
+	fileTypeMap.Store("406563686f206f66660d", "bat")
+	fileTypeMap.Store("1f8b0800000000000000", "gz")
+	fileTypeMap.Store("6c6f67346a2e726f6f74", "properties")
+	fileTypeMap.Store("cafebabe0000002e0041", "class")
+	fileTypeMap.Store("49545346030000006000", "chm")
+	fileTypeMap.Store("04000000010000001300", "mxp")
 	fileTypeMap.Store("6431303a637265617465", "torrent")
 	fileTypeMap.Store("6D6F6F76", "mov")         //Quicktime (mov)
 	fileTypeMap.Store("FF575043", "wpd")         //WordPerfect (wpd)
@@ -81,7 +81,6 @@ func init() {
 	fileTypeMap.Store("E3828596", "pwl")         //Windows Password (pwl)
 	fileTypeMap.Store("2E7261FD", "ram")         //Real Audio (ram)
 }
-
 
 func bytesToHexString(src []byte) string {
 	res := bytes.Buffer{}
@@ -99,7 +98,6 @@ func bytesToHexString(src []byte) string {
 	}
 	return res.String()
 }
-
 
 func GetFileType(fSrc []byte) string {
 	var fileType string

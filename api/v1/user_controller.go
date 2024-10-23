@@ -54,6 +54,7 @@ func GetUserDetails(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response.SuccessMsg(service.UserService.GetUserDetails(uuid)))
 }
+
 // Obtain user information through the username
 func GetUserOrGroupByName(c *gin.Context) {
 	name := c.Query("name")

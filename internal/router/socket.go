@@ -1,11 +1,9 @@
 package router
 
 import (
-	
-    
-	"realtime-chat-app/pkg/global/log"
-	"realtime-chat-app/internal/server"
 	"net/http"
+	"realtime-chat-app/internal/server"
+	"realtime-chat-app/pkg/global/log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"

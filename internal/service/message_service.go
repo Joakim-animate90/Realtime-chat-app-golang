@@ -13,8 +13,6 @@ import (
 	"gorm.io/gorm"
 )
 
-
-
 type messageService struct {
 }
 

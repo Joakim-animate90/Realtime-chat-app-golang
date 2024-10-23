@@ -18,22 +18,21 @@ var (
 	Float32 = zap.Float32
 )
 
-
 func InitLogger(logpath string, loglevel string) {
 
 	hook := lumberjack.Logger{
 		Filename:   logpath, // Log file path, default os.tempdir ()
-		MaxSize:    100,    // Save 100m per log file, default 100M by default
-		MaxBackups: 30,      
-		MaxAge:     7,      
-		Compress:   true,   
+		MaxSize:    100,     // Save 100m per log file, default 100M by default
+		MaxBackups: 30,
+		MaxAge:     7,
+		Compress:   true,
 	}
 	write := zapcore.AddSync(&hook)
-// Set the log level
-// Debug can print Info Debug Warn
-// Info level can print warn info
-// Warn can only print warn
-// debug-> info-> warn-> error
+	// Set the log level
+	// Debug can print Info Debug Warn
+	// Info level can print warn info
+	// Warn can only print warn
+	// debug-> info-> warn-> error
 	var level zapcore.Level
 	switch loglevel {
 	case "debug":
@@ -55,10 +54,10 @@ func InitLogger(logpath string, loglevel string) {
 		MessageKey:     "msg",
 		StacktraceKey:  "stacktrace",
 		LineEnding:     zapcore.DefaultLineEnding,
-		EncodeLevel:    zapcore.LowercaseLevelEncoder,  
+		EncodeLevel:    zapcore.LowercaseLevelEncoder,
 		EncodeTime:     zapcore.ISO8601TimeEncoder,     // ISO8601 UTC 时间格式
 		EncodeDuration: zapcore.SecondsDurationEncoder, //
-		EncodeCaller:   zapcore.FullCallerEncoder,      
+		EncodeCaller:   zapcore.FullCallerEncoder,
 		EncodeName:     zapcore.FullNameEncoder,
 	}
 	// Set the log level
@@ -83,7 +82,7 @@ func InitLogger(logpath string, loglevel string) {
 	development := zap.Development()
 	// Set the initialization field, such as: add a server name
 	filed := zap.Fields(zap.String("application", "chat-room"))
-// Construction log
+	// Construction log
 	Logger = zap.New(core, caller, development, filed)
 	Logger.Info("Logger init success")
 }
