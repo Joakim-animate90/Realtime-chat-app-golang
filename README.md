@@ -63,7 +63,7 @@ Here is the link to a video showcasing its functionalities [https://www.loom.com
 2. Run the Docker container:
 
    ```bash
-   docker run -p 8080:8080 realtime-chat-app
+   docker compose up --build
    ```
 
 ## API Endpoints
