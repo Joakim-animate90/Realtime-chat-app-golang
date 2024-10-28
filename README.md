@@ -4,6 +4,8 @@ This is a realtime chat application built using Go and Gin framework, designed t
 
 Here is the link to the frontend [https://github.com/Joakim-animate90/Realtime-chat-app-react-ui]
 
+Here is the link to a video showcasing its functionalities [https://www.loom.com/share/e29f600a5bdb421f9c082ff4d86ae4aa?sid=176db2af-fc85-4b9a-9385-062dcb862ef2]
+
 ## Features
 
 - User registration, login, and information modification
