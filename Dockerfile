@@ -4,4 +4,5 @@ RUN [ "mkdir", "-p", "/usr/local/realtime-chat-go/web/static/file" ]
 WORKDIR /usr/local/realtime-chat-go
 COPY /bin/chat /usr/local/realtime-chat-go
 COPY /config.toml /usr/local/realtime-chat-go
-CMD [ "/usr/local/realtime-chat-go/chat" ]
+RUN chmod +x /usr/local/realtime-chat-go/chat
+ENTRYPOINT ["/usr/local/realtime-chat-go/chat"]

@@ -1,12 +1,12 @@
 appName = "chat_room"
 
 [mysql]
-host = "127.0.0.1"
-name = "chat"
+host = "mysql8"
+name = "realtime-chat-go"
 password = "root1234"
 port = 3306
 tablePrefix = ""
-user = "root"
+user = "kimongi"
 
 [log]
 level = "debug"

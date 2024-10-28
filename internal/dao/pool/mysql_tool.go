@@ -14,10 +14,12 @@ var _db *gorm.DB
 func init() {
 	username := config.GetConfig().MySQL.User
 	password := config.GetConfig().MySQL.Password
-	host := config.GetConfig().MySQL.Host
+	//host := config.GetConfig().MySQL.Host
+	host := "mysql8" // Use the service name from docker-compose
+
 	port := config.GetConfig().MySQL.Port
 	Dbname := config.GetConfig().MySQL.Name
-	timeout := "10s"
+	timeout := "30s"
 
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local&timeout=%s", username, password, host, port, Dbname, timeout)
 	var err error
