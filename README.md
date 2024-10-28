@@ -2,6 +2,8 @@
 
 This is a realtime chat application built using Go and Gin framework, designed to allow users to chat with each other and manage user information, friends, and groups. The application supports both individual and group messaging, and includes features like user registration, login, and avatar management.
 
+Here is the link to the frontend [https://github.com/Joakim-animate90/Realtime-chat-app-react-ui]
+
 ## Features
 
 - User registration, login, and information modification
